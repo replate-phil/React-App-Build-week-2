@@ -45,7 +45,7 @@ class Login extends Component {
                     />
                     <button>
                         {this.props.isLoggingIn ? (
-                            <Loader type="FourTriangles" color="blue" height='12' width='26' />
+                            <Loader type="BallTriangle" color="blue" height='12' width='26' />
                         ) : (
                             'Log in'    
                         )}

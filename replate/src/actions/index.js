@@ -17,7 +17,17 @@ export const login = creds => dispatch => {
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/`)
+        .get(`https://replate-phil.herokuapp.com/`)
+        .then(res => 
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+        )
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
+};
+
+export const postData = () => dispatch => {
+    dispatch({ type: FETCH_REPLATE_START });
+    axios
+        .get(`https://replate-phil.herokuapp.com/`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -27,7 +37,17 @@ export const getData = () => dispatch => {
 export const getBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/api/business/?id=(id)`)
+        .get(`https://replate-phil.herokuapp.com/api/business`)
+        .then(res => 
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+        )
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
+};
+
+export const postBusiness = () => dispatch => {
+    dispatch({ type: FETCH_REPLATE_START });
+    axios
+        .get(`https://replate-phil.herokuapp.com/api/business`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -37,7 +57,17 @@ export const getBusiness = () => dispatch => {
 export const getVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/api/volunteer/?id=(id)`)
+        .get(`https://replate-phil.herokuapp.com/api/volunteer/`)
+        .then(res => 
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+        )
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
+};
+
+export const postVolunteer = () => dispatch => {
+    dispatch({ type: FETCH_REPLATE_START });
+    axios
+        .get(`https://replate-phil.herokuapp.com/api/volunteer`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -47,7 +77,17 @@ export const getVolunteer = () => dispatch => {
 export const getDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/api/donation/?id=(id)`)
+        .get(`https://replate-phil.herokuapp.com/api/donation/`)
+        .then(res => 
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+        )
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
+};
+
+export const postDonation = () => dispatch => {
+    dispatch({ type: FETCH_REPLATE_START });
+    axios
+        .get(`https://replate-phil.herokuapp.com/api/donation`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -57,19 +97,20 @@ export const getDonation = () => dispatch => {
 export const getFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/api/foodbank/?id=(id)`)
+        .get(`https://replate-phil.herokuapp.com/api/foodbank/`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const getVol = () => dispatch => {
+export const postFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`http://localhost:5000/api/business`)
+        .get(`https://replate-phil.herokuapp.com/api/foodbank`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
+
