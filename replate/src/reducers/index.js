@@ -1,10 +1,10 @@
 import { LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
 
 const initialState = {
+    replates: [],
     fetchingData: false,
     updatingData: false,
     deletingData: false,
-    replate: [],
     isLoggingIn: false,
     err: ''
 };
@@ -29,18 +29,28 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
-                replate: action.payload
+                replates: action.payload
             };
         case FETCH_REPLATE_FAILURE:
             return {
                 ...state,
-                err: action.payload
+                err: action.payload,
+                fetchingData: false
             };
         case UPDATE:
             return {
                 ...state,
-
-            }    
+                err: '',
+                fetchingData: false,
+                replates: [...state.replate]
+            }; 
+        case DELETE:
+            return {
+                ...state,
+                err: '',
+                fetchingData: false,
+                replates: [...state.replate]
+            };       
         default:
             return state;
     }    

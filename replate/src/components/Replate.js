@@ -31,22 +31,37 @@ class Replate extends Component {
     
     render() { 
         return ( 
-            {this.props.replates.map((replate, index) => {
-                return (
-                    <div key= {index}>
-                        
-                    </div>    
-                )
-            })}
-         );
+            <div>
+                <div>
+                    {this.props.replates.map((replate, index) => {
+                        return (
+                            <div key= {index}>
+                                <h2>{replate.array}</h2>
+                            </div>    
+                        )
+                    })}
+                </div>
+ 
+                <form onSubmit={this.addReplate}>
+                    <input 
+                    type='text'
+                    name='name'
+                    value={this.state.replate}
+                    placeholder='...'
+                    onChange={this.handleChanges}
+                    />
+                    <button type="submit">Add Replate</button>
+                </form>
+
+                <h1>{this.props.replate}</h1>
+            </div>
+        );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        prop: state.prop
-    }
-}
+const mapStateToProps = state => ({
+    replates: state.replates
+});
 
 export default connect(
     mapStateToProps,
