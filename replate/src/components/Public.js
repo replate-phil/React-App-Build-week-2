@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class Public extends Component {
     render() {
+        console.log('entering public page!!');
         return (
             <div>
                 <h1>Error: Please Log in!</h1>

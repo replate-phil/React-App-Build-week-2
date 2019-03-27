@@ -36,18 +36,18 @@ class Login extends Component {
                         name='username'
                         value={this.state.credentials.username}
                         onChange={this.handleChanges}
-                        required
+                        // required
                     />
                     <input 
                         type='password'
                         name='password'
                         value={this.state.credentials.password}
                         onChange={this.handleChanges}
-                        required
+                        // required
                     />
                     <button>
                         {this.props.isLoggingIn ? (
-                            <Loader type="BallTriangle" color="blue" height='12' width='26' />
+                            <Loader type="Ball-Triangle" color="blue" height='12' width='37' />
                         ) : (
                             'Log in'    
                         )}
