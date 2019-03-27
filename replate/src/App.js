@@ -11,12 +11,9 @@ function App() {
       <Router>
         <div className='App'>
           <ul>
-            <li>
               <Link to ='/public'>Public Page</Link>
-            </li>
-            <li>
+            <br/>
               <Link to ='/protected'>Secure Page</Link>
-            </li>
           </ul>
           <Route path='/public' component={Public} />
           <Route path='/login' component={Login} />
