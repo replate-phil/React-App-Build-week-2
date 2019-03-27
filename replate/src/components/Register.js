@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 
-class RegisterForm extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +25,7 @@ class RegisterForm extends Component {
         let newUser = {};
         const { usertype } = this.props.match.params;
 
-        if (usertype === 'volunteer') {
+        if (usertype === 'volunteers') {
             newUser = {
                 username: this.state.username,
                 password: this.state.password,
@@ -36,7 +36,7 @@ class RegisterForm extends Component {
         console.log(newUser);
 
         axios
-            .post('https://replate-phil.herokuapp.com/api/auth/register', newUser)
+            .post ('https://replate-phil.herokuapp.com/api/register', newUser)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
                 this.props.history.push('/loggedin');
@@ -60,4 +60,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps, 
     {}
-) (RegisterForm);
+) (Register);

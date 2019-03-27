@@ -42,6 +42,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
+                updatingData: true,
                 replates: [...state.replate]
             }; 
         case DELETE:
@@ -49,6 +50,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
+                deletingData: true,
                 replates: [...state.replate]
             };       
         default:

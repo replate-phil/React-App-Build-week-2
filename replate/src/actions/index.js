@@ -92,7 +92,7 @@ export const deleteBusiness = (id) => dispatch => {
 export const getVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/volunteer`)
+        .get(`${URL}/api/volunteers`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -102,7 +102,7 @@ export const getVolunteer = () => dispatch => {
 export const postVolunteer = (replate) => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/volunteer`, replate)
+        .post(`${URL}/api/volunteers`, replate)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -112,7 +112,7 @@ export const postVolunteer = (replate) => dispatch => {
 export const updateVolunteer = (replate) => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/volunteer/${id}`, replate)
+        .put(`${URL}/api/volunteers/${id}`, replate)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -122,7 +122,7 @@ export const updateVolunteer = (replate) => dispatch => {
 export const deleteVolunteer = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/volunteer/${id}`)
+        .delete(`${URL}/api/volunteers/${id}`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -132,7 +132,7 @@ export const deleteVolunteer = (id) => dispatch => {
 export const getDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/donation`)
+        .get(`${URL}/api/donations`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -142,7 +142,7 @@ export const getDonation = () => dispatch => {
 export const postDonation = (replate) => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/donation`, replate)
+        .post(`${URL}/api/donations`, replate)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -152,7 +152,7 @@ export const postDonation = (replate) => dispatch => {
 export const updateDonation = (replate) => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/donation/${id}`, replate)
+        .put(`${URL}/api/donations/${id}`, replate)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -162,7 +162,7 @@ export const updateDonation = (replate) => dispatch => {
 export const deleteDonation = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/donation/${id}`)
+        .delete(`${URL}/api/donations/${id}`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
