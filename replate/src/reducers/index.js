@@ -1,7 +1,9 @@
-import { LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE } from '../actions';
+import { LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
 
 const initialState = {
     fetchingData: false,
+    updatingData: false,
+    deletingData: false,
     replate: [],
     isLoggingIn: false,
     err: ''
@@ -34,6 +36,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 err: action.payload
             };
+        case UPDATE:
+            return {
+                ...state,
+
+            }    
         default:
             return state;
     }    

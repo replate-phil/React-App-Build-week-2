@@ -36,12 +36,14 @@ class Login extends Component {
                         name='username'
                         value={this.state.credentials.username}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type='password'
                         name='password'
                         value={this.state.credentials.password}
                         onChange={this.handleChanges}
+                        required
                     />
                     <button>
                         {this.props.isLoggingIn ? (
