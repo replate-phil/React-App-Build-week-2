@@ -54,7 +54,7 @@ class Login extends Component {
                         required
                     />
                     <button type="submit">
-
+                    
                         {this.props.isLoggingIn ? (
                             <Loader type="Ball-Triangle" color="blue" height='12' width='37' />
                         ) : (

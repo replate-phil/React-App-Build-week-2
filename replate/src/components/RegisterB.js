@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { register, getData } from '../actions';
 
-class RegisterTwo extends Component {
+//Business/Foodbank
+class RegisterB extends Component {
     constructor(props) {
         super(props)
         this.state = {
-        userTwo: {
+        userB: {
             'businessName': '',
             'businessAddr': '',
             'phone': '',
@@ -23,8 +24,8 @@ class RegisterTwo extends Component {
 
     handleChanges = e => {
         this.setState({
-            userTwo: {
-                ...this.state.userTwo,
+            userB: {
+                ...this.state.userB,
                 [e.target.name]: e.target.value,
             }    
         });
@@ -32,29 +33,29 @@ class RegisterTwo extends Component {
 
     register = e => {
         e.preventDefault();
-        this.props.register(this.state.userTwo);
+        this.props.register(this.state.userB);
         this.props.history.push('/');
     };    
 
     render() {
-        console.log('entering registration!!');
+        console.log('entering Business registration!!');
         return (
             <div>
                 <form onSubmit={this.register}>
-                    <h2>Registration</h2>
+                    <h2>Business Registration</h2>
                     <h5>Please Register for an account here!!</h5>
                     <input 
                         type='text'
                         name='businessName'
-                        value={this.state.userTwo.businessName}
-                        placeholder='Enter business name'
+                        value={this.state.userB.businessName}
+                        placeholder='Enter Business Name'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
                         name='businessAddr'
-                        value={this.state.userTwo.businessAddr}
+                        value={this.state.userB.businessAddr}
                         placeholder='Enter Business Address'
                         onChange={this.handleChanges}
                         required
@@ -62,32 +63,32 @@ class RegisterTwo extends Component {
                     <input
                         type='text'
                         name='phone'
-                        value={this.state.userTwo.phone}
-                        placeholder='Enter phone'
+                        value={this.state.userB.phone}
+                        placeholder='Enter Phone'
                         onChange={this.handleChanges}
                         required
                     />
                     <input
                         type='text'
                         name='email'
-                        value={this.state.userTwo.email}
-                        placeholder='Enter email'
+                        value={this.state.userB.email}
+                        placeholder='Enter Email'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='password'
                         name='password'
-                        value={this.state.userTwo.password}
-                        placeholder='Enter password'
+                        value={this.state.userB.password}
+                        placeholder='Enter Password'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
                         name='usertype'
-                        value={this.state.userTwo.usertype}
-                        placeholder='Enter usertype'
+                        value={this.state.userB.usertype}
+                        placeholder='Enter Usertype'
                         onChange={this.handleChanges}
                         required
                     />
@@ -112,4 +113,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { register, getData }
-) (RegisterTwo);
+) (RegisterB);

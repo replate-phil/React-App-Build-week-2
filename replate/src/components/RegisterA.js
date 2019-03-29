@@ -11,10 +11,10 @@ const Registerpage = styled.div`
 const Page = styled.div`
     margin-right: 30px;
 `;
-
-class RegisterOne extends Component {
+//volunteer
+class RegisterA extends Component {
     state = {
-        userOne: {
+        userA: {
             'first_name': '',
             'last_name': '',
             'email': '',
@@ -31,8 +31,8 @@ class RegisterOne extends Component {
 
     handleChanges = e => {
         this.setState({
-            userOne: {
-                ...this.state.userOne,
+            userA: {
+                ...this.state.userA,
                 [e.target.name]: e.target.value,
             }    
         });
@@ -40,7 +40,7 @@ class RegisterOne extends Component {
 
     register = e => {
         e.preventDefault();
-        this.props.register(this.state.userOne);
+        this.props.register(this.state.userA);
         this.props.history.push('/');
     };    
 
@@ -50,62 +50,62 @@ class RegisterOne extends Component {
             <Registerpage>
                 <form onSubmit={this.register}>
                 <Page>
-                    <h2>Registration</h2>
-                    <h5>Please Register for a Volunteer account here!!</h5>
+                    <h2>Volunteer Registration</h2>
+                    <h5>Please Register for an account here!!</h5>
                 </Page>
                     <input
                         type='text'    
                         name='first_name'
-                        value={this.state.userOne.first_name}
-                        placeholder='Enter first name'
+                        value={this.state.userA.first_name}
+                        placeholder='Enter First Name'
                         onChange={this.handleChanges}
                         required
                     />
                     <input
                         type='text'
                         name='last_name'
-                        value={this.state.userOne.last_name}
-                        placeholder='Enter last name'
+                        value={this.state.userA.last_name}
+                        placeholder='Enter Last Name'
                         onChange={this.handleChanges}
                         required
                     /> 
                     <input
                         type='text'
                         name='email'
-                        value={this.state.userOne.email}
-                        placeholder='Enter email'
+                        value={this.state.userA.email}
+                        placeholder='Enter Email'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='password'
                         name='password'
-                        value={this.state.userOne.password}
-                        placeholder='Enter password'
+                        value={this.state.userA.password}
+                        placeholder='Enter Password'
                         onChange={this.handleChanges}
                         required
                     />
                     <input
                         type='text'
                         name='phone'
-                        value={this.state.userOne.phone}
-                        placeholder='Enter phone'
+                        value={this.state.userA.phone}
+                        placeholder='Enter Phone'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
                         name='address'
-                        value={this.state.userOne.address}
-                        placeholder='Enter address'
+                        value={this.state.userA.address}
+                        placeholder='Enter Address'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
                         name='usertype'
-                        value={this.state.userOne.usertype}
-                        placeholder='Enter usertype'
+                        value={this.state.userA.usertype}
+                        placeholder='Enter Usertype'
                         onChange={this.handleChanges}
                         required
                     />
@@ -130,4 +130,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { register, getData }
-) (RegisterOne);
+) (RegisterA);
