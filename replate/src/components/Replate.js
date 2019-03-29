@@ -15,7 +15,7 @@ class Replate extends Component {
                     <Link to='/business'>Business</Link>
                     <Link to='/volunteer'>Volunteer</Link>
                     <Link to='/donations'>Donations</Link>
-                    <Link to='/foodbank'>FoodBank</Link>
+                    <Link to='/foodbank'>Foodbank</Link>
 
                     <PrivateRoute exact path='/business' component={Business} />
                     <PrivateRoute exact path='/volunteer' component={Volunteer} />

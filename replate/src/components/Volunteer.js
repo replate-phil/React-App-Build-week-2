@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getDonation } from '../actions';
 
-
 class Volunteer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             donations: {
-                food_pickup: '',
-                businessAddr: '',
-                amount_food: '',
-                type_food:'',
-                expiration_time: ''
-        }}
+                'business_id': '',
+                'volunteer_id': '',
+                'foodbank_id': '',
+                'donation_id':'',
+                'completed': '',
+                'comment': ''
+            }
+        }
     };
 
     componentDidMount() {
@@ -35,22 +36,23 @@ class Volunteer extends Component {
         console.log('hello, welcome to the volunteers page!!')
         return (
             <div>
-                <h1>Hello volunteers!</h1>
+                <h1>'Hello volunteers!'</h1>
                 {this.props.donations.map((volunteer, index) => {
                     return (
                         <div key={index}>
-                            <h3>{volunteer.food_pickup}</h3>
-                            <h3>{volunteer.businessAddr}</h3>
-                            <h3>{volunteer.amount_food}</h3>
-                            <h3>{volunteer.type_food}</h3>
-                            <h3>{volunteer.expiration_time}</h3>
+                            <h3>{volunteer.business_id}</h3>
+                            <h3>{volunteer.volunteer_id}</h3>
+                            <h3>{volunteer.foodbank_id}</h3>
+                            <h3>{volunteer.donation_id}</h3>
+                            <h3>{volunteer.completed}</h3>
+                            <h3>{volunteer.comment}</h3>
                         </div>
                     )
                 })}
             </div>
         )   
     }
-}
+};
 
 const mapStateToProps = state => ({
     donations: state.donations

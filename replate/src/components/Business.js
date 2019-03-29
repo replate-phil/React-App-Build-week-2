@@ -31,7 +31,7 @@ class Business extends Component {
         console.log('hello, welcome to the business page!!')
         return ( 
            <div className=' business-page'>
-                <h1>A big welcome to all Businesses!</h1>
+                <h1>'A big welcome to all Businesses!'</h1>
            </div>
          );
     }

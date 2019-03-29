@@ -31,7 +31,7 @@ class Donation extends Component {
         console.log('hello, welcome to the donation page!!')
         return ( 
            <div className='donation-page'>
-                <h1>Please Donate!</h1>
+                <h1>'Please Donate!'</h1>
            </div>
          );
     }
