@@ -1,7 +1,10 @@
-import { LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
+import { REGISTER, LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
 
 const initialState = {
+    users: [],
     replates: [],
+    donations: [],
+    inRegister: false,
     fetchingData: false,
     updatingData: false,
     deletingData: false,
@@ -11,12 +14,17 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN: {
+        case REGISTER: 
+            return {
+                ...state,
+                inRegister: true,
+                users: action.payload
+            };
+        case LOGIN:
             return {
                 ...state,
                 isLoggingIn: true
             };
-        }
         case FETCH_REPLATE_START:
             return {
                 ...state,

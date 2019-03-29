@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { login } from '../actions';
-import PrivateRoute from './Authentication';
-import Register from './Register';
+import { login, getData } from '../actions';
 
 class Login extends Component {
     state = {
-        credentials: {
-            username: '',
+        info: {
+            email: '',
             password: ''
         }
     };
 
+    // componentDidMount() {
+    //     this.props.getData();
+    // }
+    
     handleChanges = e => {
         this.setState({
-            credentials: {
-                ...this.state.credentials,
+            info: {
+                ...this.state.info,
                 [e.target.name]: e.target.value
             }
         });
@@ -24,28 +26,29 @@ class Login extends Component {
 
     login = e => {
         e.preventDefault();
-        this.props
-        .login(this.state.credentials)
-        .then(() => this.props.history.push('/protected'));
+        this.props.login(this.state.info);
+        this.props.history.push('/replate');
     };
   
     render() {
+        console.log('logging in!!');
         return (
             <div>
                 <form onSubmit={this.login}>
-                    <h3>Login Below!</h3>
+                    <h1>Welcome Back!</h1>
+                    <h4>Please, Login Below!</h4>
                     <input
                         type='text'
-                        name='username'
-                        value={this.state.credentials.username}
-                        placeholder='Enter username'
+                        name='email'
+                        value={this.state.info.email}
+                        placeholder='Enter email'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='password'
                         name='password'
-                        value={this.state.credentials.password}
+                        value={this.state.info.password}
                         placeholder='Enter password'
                         onChange={this.handleChanges}
                         required
@@ -72,28 +75,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { login, Register, PrivateRoute }
+    { login, getData }
 ) (Login);
-
-
-
-// fetch('https://replate-phil.herokuapp.com/api/auth', {
-//     method: 'POST',
-//     body: JSON.stringify(this.state.credentials),
-//     header: {
-//         'Content-Type': 'app/json'
-//     }
-// })
-// .then(res => {
-//     if (res.status === 200) {
-//         this.props.history.push('/protected');
-// } else {
-//     const error = new Error(res.error);
-//     throw error;
-// }
-// })
-// .catch(err => {
-// console.log(err);
-// alert ('Error logging in please try again');
-// });
-// }  

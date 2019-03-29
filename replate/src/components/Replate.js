@@ -1,60 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData, postData, getBusiness, postBusiness, 
-getVolunteer, postVolunteer, getDonation, postDonation, 
-getFoodbank, postFoodbank } from '../actions';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import PrivateRoute from './Authentication';
+import Business from './Business';
+import Volunteer from './Volunteer';
+import Donation from './Donation';
+import Foodbank from './Foodbank';
 
 class Replate extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            replate: []
-          }
-    }
-
-    componentDidMount() {
-        this.props.getData(this.state.replates);
-    }
-
-    addReplate = e => {
-        e.preventDefault();
-        this.props.postData(this.state.replate)
-    }
-
-    handleChanges = e => {
-        this.setState({
-            replate: {
-                ...this.state.replate,
-                [e.target.name]: e.target.value}
-            });
-        };
-    
     render() { 
         return ( 
-            <div>
-                <div>
-                    {this.props.replates.map((replate, index) => {
-                        return (
-                            <div key= {index}>
-                                <h2>{replate.array}</h2>
-                            </div>    
-                        )
-                    })}
-                </div>
- 
-                <form onSubmit={this.addReplate}>
-                    <input 
-                    type='text'
-                    name='name'
-                    value={this.state.replate}
-                    placeholder='...'
-                    onChange={this.handleChanges}
-                    />
-                    <button type="submit">Add Replate</button>
-                </form>
+            <Router>
+                <div className='replate-home'>
+                    <Link to='/business'>Business</Link>
+                    <Link to='/volunteer'>Volunteer</Link>
+                    <Link to='/donations'>Donations</Link>
+                    <Link to='/foodbank'>FoodBank</Link>
 
-                <h1>{this.props.replate}</h1>
-            </div>
+                    <PrivateRoute exact path='/business' component={Business} />
+                    <PrivateRoute exact path='/volunteer' component={Volunteer} />
+                    <PrivateRoute exact path='/donations' component={Donation} />
+                    <PrivateRoute exact path='/foodbank' component={Foodbank} />
+                </div>
+            </Router>
         );
     }
 }
@@ -65,7 +33,34 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getData, postData, getBusiness, postBusiness, 
-        getVolunteer, postVolunteer, getDonation, postDonation, 
-        getFoodbank, postFoodbank }
+    { Business, Volunteer, Donation, Foodbank }
   ) (Replate);
+
+
+//  constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         replate: {
+    //             Business: '',
+
+    //         }
+    //       }
+    // }
+
+    // // componentDidMount() {
+    // //     this.props.getData(this.state.replates);
+    // // }
+
+    // // addReplate = e => {
+    // //     e.preventDefault();
+    // //     this.props.postData(this.state.replate)
+    // // }
+
+    // handleChanges = e => {
+    //     this.setState({
+    //         replate: {
+    //             ...this.state.replate,
+    //             [e.target.name]: e.target.value}
+    //         });
+    //     };
+    

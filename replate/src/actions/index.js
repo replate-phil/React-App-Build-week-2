@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+export const REGISTER = 'REGISTER';
 export const LOGIN = 'LOGIN';
 export const FETCH_REPLATE_START = 'FETCH_REPLATE_START';
 export const FETCH_REPLATE_SUCCESS = 'FETCH_REPLATE_SUCCESS';
@@ -11,14 +12,44 @@ const URL = `https://replate-phil.herokuapp.com`;
 
 const id = `?id=(id)`;
 
-export const login = creds => dispatch => {
+// const apiUrl =
+//     process.env.JWT_SECRET === 'default to admin'
+//     ? `${URL}`
+//     : 'http://localhost:5000';
+
+
+export const register = creds => dispatch => {
+    dispatch({ type: REGISTER });
+    return axios
+        .post(`https://replate-phil.herokuapp.com/api/auth/register`, creds)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
+export const login = info => dispatch => {
     dispatch({ type: LOGIN });
     return axios
-    .post(`${URL}/api/auth`, creds)
+    .post(`https://replate-phil.herokuapp.com/api/auth/login`, info)
     .then(res => {
         localStorage.setItem('token', res.data.payload);
     });
 };
+
+export const getUsers = () => dispatch => {
+    dispatch({ type: FETCH_REPLATE_START });
+    return axios
+        .post(`${URL}`)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
 
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
@@ -32,9 +63,6 @@ export const getData = () => dispatch => {
         })
         .catch(err => {
             console.log(err.res);
-            if (err.res.status === 403) {
-                localStorage.removeItem('token');
-            }
             dispatch({ type: FETCH_REPLATE_FAILURE, payload: err.res });
         }); 
 };
@@ -99,10 +127,10 @@ export const getVolunteer = () => dispatch => {
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postVolunteer = (replate) => dispatch => {
+export const postVolunteer = (volunteer) => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/volunteers`, replate)
+        .post(`${URL}/api/volunteers`, volunteer)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
