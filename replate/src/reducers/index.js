@@ -1,7 +1,6 @@
-import { REGISTER, LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
+import { REGISTER, LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REP_SUCCESS, FETCH_REPL_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
 
 const initialState = {
-    users: '',
     replates: '',
     businesses: [],
     donations: [],
@@ -9,8 +8,8 @@ const initialState = {
     foodbanks: [],
     inRegister: false,
     fetchingData: false,
-    updatingData: false,
-    deletingData: false,
+    // updatingData: false,
+    // deletingData: false,
     loggingIn: false,
     err: ''
 };
@@ -41,7 +40,23 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
-                replates: action.payload
+                ...action.payload
+            };
+        case FETCH_REP_SUCCESS:
+            console.log(action.payload);
+            return {
+                ...state,
+                err: '',
+                fetchingData: false,
+                ...action.payload
+            }; 
+        case FETCH_REPL_SUCCESS:
+            console.log(action.payload);
+            return {
+                ...state,
+                err: '',
+                fetchingData: false,
+                ...action.payload
             };
         case FETCH_REPLATE_FAILURE:
             return {

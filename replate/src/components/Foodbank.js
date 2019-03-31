@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFoodbank} from '../actions';
+import { getFoodbank, postDonation} from '../actions';
 
 class Foodbank extends Component {
     constructor(props) {
@@ -18,21 +18,19 @@ class Foodbank extends Component {
     };
 
     componentDidMount() {
-        this.props.getFoodbank(this.state.foodbank);
+        this.props.getFoodbank(this.props.foodbank);
     }
     
 
     handleChanges = e => {
         this.setState({
-                foodbank: {
             ...this.state.foodbank,
             [e.target.name]: e.target.value}
-        });
-    };
-
+        )};
+    
     foodbank = e => {
         e.preventDefault();
-        this.props.foodbank(this.state.foodbank);
+        this.props.postFoodbank(this.state.foodbank);
     }
 
     render() { 
@@ -41,6 +39,7 @@ class Foodbank extends Component {
            <div className='foodbank-page'>
                 <h1>'Welcome to the FoodBank!'</h1>
                 {(this.props.foodbanks.map((foodbank, index) => {
+                    console.log(foodbank);
                     return (
                         <div key={index}>
                             <h3>{foodbank.businessName}</h3>
@@ -63,5 +62,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getFoodbank }
+    { getFoodbank, postDonation }
 ) (Foodbank);

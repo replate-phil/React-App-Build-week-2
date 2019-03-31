@@ -4,6 +4,8 @@ export const REGISTER = 'REGISTER';
 export const LOGIN = 'LOGIN';
 export const FETCH_REPLATE_START = 'FETCH_REPLATE_START';
 export const FETCH_REPLATE_SUCCESS = 'FETCH_REPLATE_SUCCESS';
+export const FETCH_REP_SUCCESS = 'FETCH_REP_SUCCESS';
+export const FETCH_REPL_SUCCESS = 'FETCH_REPL_SUCCESS';
 export const FETCH_REPLATE_FAILURE = 'FETCH_REPLATE_FAILURE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
@@ -32,18 +34,6 @@ export const login = info => dispatch => {
         localStorage.setItem('token', res.data.payload);
     });
 };
-
-// export const getUsers = () => dispatch => {
-//     dispatch({ type: FETCH_REPLATE_START });
-//     return axios
-//         .post(`${URL}/`)
-//         .then(res => {
-//             console.log(res);
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         });
-//     };
 
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
@@ -74,7 +64,9 @@ export const postData = () => dispatch => {
 export const getBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/business/`)
+        .get(`${URL}/api/business`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -114,7 +106,9 @@ export const deleteBusiness = (id) => dispatch => {
 export const getVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/volunteers/`)
+        .get(`${URL}/api/volunteers`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -124,7 +118,7 @@ export const getVolunteer = () => dispatch => {
 export const postVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/volunteers/${id}/`)
+        .post(`${URL}/api/volunteers`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -154,9 +148,11 @@ export const deleteVolunteer = (id) => dispatch => {
 export const getDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/donations`)
+        .get(`${URL}/api/donations`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data.donations })
+            dispatch({ type: FETCH_REP_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -164,7 +160,7 @@ export const getDonation = () => dispatch => {
 export const postDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/donations/${id}/`)
+        .post(`${URL}/api/donations`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -194,9 +190,11 @@ export const deleteDonation = (id) => dispatch => {
 export const getFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/foodbank/`)
+        .get(`${URL}/api/foodbank`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_REPL_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -204,7 +202,7 @@ export const getFoodbank = () => dispatch => {
 export const postFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/foodbank/${id}/`)
+        .post(`${URL}/api/foodbank`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )

@@ -7,11 +7,11 @@ class Donation extends Component {
         super(props);
         this.state = {
             donation: {
-                'name': 'oranges',
-                'quantity_lbs': '4',
-                'picked_up': 'true',
-                'comment': 'pick up at',
-                'business_id': '1'
+                'name': '',
+                'quantity_lbs': '',
+                'picked_up': '',
+                'comment': '',
+                'business_id': ''
             }
         }
     };

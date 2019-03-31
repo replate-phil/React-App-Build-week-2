@@ -18,7 +18,7 @@ class Volunteer extends Component {
     };
 
     componentDidMount() {
-        this.props.getVolunteer(this.props.volunteer);
+        this.props.getVolunteer(this.state.volunteer);
     };
     
     handleChanges = e => {
@@ -29,10 +29,10 @@ class Volunteer extends Component {
         });
     };
 
-    volunteer = e => {
-        e.preventDefault();
-        this.props.updateVolunteer(this.state.volunteer);
-    }
+    // volunteer = e => {
+    //     e.preventDefault();
+    //     this.props.updateVolunteer(this.state.volunteer);
+    // }
 
     render() { 
         console.log('hello, welcome to the volunteers page!!')

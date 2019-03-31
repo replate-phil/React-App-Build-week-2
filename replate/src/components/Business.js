@@ -7,10 +7,9 @@ class Business extends Component {
         super(props);
         this.state = {
             business: {
-                id: '',
                 businessName: '',
-                phone: '',
                 businessAddr: '',
+                phone: '',
                 email: '',
                 usertype: ''
             }  
@@ -41,10 +40,9 @@ class Business extends Component {
                 {(this.props.businesses.map((business, index) => {
                     return (
                         <div key={index}>
-                            <h3>{business.id}</h3>
                             <h3>{business.businessName}</h3>
-                            <h3>{business.phone}</h3>
                             <h3>{business.businessAddr}</h3>
+                            <h3>{business.phone}</h3>
                             <h3>{business.email}</h3>
                             <h3>{business.usertype}</h3>
                         </div>
