@@ -98,8 +98,8 @@ class Donation extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    donations: state.donations
+const mapStateToProps = ({donations}) => ({
+    donations
 });
 
 export default connect(

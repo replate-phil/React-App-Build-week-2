@@ -56,8 +56,8 @@ class Volunteer extends Component {
     }
 }    
 
-const mapStateToProps = (state) => ({
-    volunteers: state.volunteers
+const mapStateToProps = ({volunteers}) => ({
+    volunteers
 });
 
 export default connect(

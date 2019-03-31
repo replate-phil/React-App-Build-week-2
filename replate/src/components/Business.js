@@ -53,9 +53,9 @@ class Business extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    businesses: state.businesses
-});
+const mapStateToProps = ({businesses}) => ({
+    businesses
+});    
 
 export default connect(
     mapStateToProps,

@@ -64,9 +64,7 @@ export const postData = () => dispatch => {
 export const getBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/business`, {
-            headers: {Authorization: localStorage.getItem('token')}
-        })
+        .get(`${URL}/api/business`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -106,9 +104,7 @@ export const deleteBusiness = (id) => dispatch => {
 export const getVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/volunteers`, {
-            headers: {Authorization: localStorage.getItem('token')}
-        })
+        .get(`${URL}/api/volunteers`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -148,9 +144,7 @@ export const deleteVolunteer = (id) => dispatch => {
 export const getDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/donations`, {
-            headers: {Authorization: localStorage.getItem('token')}
-        })
+        .get(`${URL}/api/donations`)
         .then(res => 
             dispatch({ type: FETCH_REP_SUCCESS, payload: res.data })
         )
@@ -190,9 +184,7 @@ export const deleteDonation = (id) => dispatch => {
 export const getFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/foodbank`, {
-            headers: {Authorization: localStorage.getItem('token')}
-        })
+        .get(`${URL}/api/foodbank`)
         .then(res => 
             dispatch({ type: FETCH_REPL_SUCCESS, payload: res.data })
         )

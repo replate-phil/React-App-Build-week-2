@@ -56,8 +56,8 @@ class Foodbank extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    foodbanks: state.foodbanks
+const mapStateToProps = ({foodbanks}) => ({
+    foodbanks
 });
 
 export default connect(
