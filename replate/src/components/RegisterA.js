@@ -9,7 +9,7 @@ const Registerpage = styled.div`
 `;
 
 const Page = styled.div`
-    margin-right: 30px;
+    
 `;
 //volunteer
 class RegisterA extends Component {

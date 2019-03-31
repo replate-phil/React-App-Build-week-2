@@ -1,14 +1,17 @@
 import { REGISTER, LOGIN, FETCH_REPLATE_START, FETCH_REPLATE_SUCCESS, FETCH_REPLATE_FAILURE, UPDATE, DELETE } from '../actions';
 
 const initialState = {
-    users: [],
-    replates: [],
+    users: '',
+    replates: '',
+    businesses: [],
     donations: [],
+    volunteers: [],
+    foodbanks: [],
     inRegister: false,
     fetchingData: false,
     updatingData: false,
     deletingData: false,
-    isLoggingIn: false,
+    loggingIn: false,
     err: ''
 };
 
@@ -23,7 +26,8 @@ const rootReducer = (state = initialState, action) => {
         case LOGIN:
             return {
                 ...state,
-                isLoggingIn: true
+                loggingIn: true,
+                err: ''
             };
         case FETCH_REPLATE_START:
             return {
@@ -51,7 +55,7 @@ const rootReducer = (state = initialState, action) => {
                 err: '',
                 fetchingData: false,
                 updatingData: true,
-                replates: [...state.replate]
+                volunteers: [...state.replate]
             }; 
         case DELETE:
             return {

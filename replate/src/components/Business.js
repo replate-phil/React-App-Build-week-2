@@ -1,47 +1,65 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getBusiness } from '../actions';
+import { getBusiness, postBusiness } from '../actions';
 
 class Business extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            business: [],
-            
-          }
+            business: {
+                id: '',
+                businessName: '',
+                phone: '',
+                businessAddr: '',
+                email: '',
+                usertype: ''
+            }  
+        }
+    };
+
+    componentDidMount() {
+        this.props.getBusiness(this.props.business);
     }
-
-    // componentDidMount() {
-    //     this.props.getBusiness();
-    // }
     
 
-    // handleChanges = e => {
-    //     this.setState({
-    //         ...this.state.business,
-    //         [e.target.name]: e.target.value}
-    //     )};
+    handleChanges = e => {
+        this.setState({
+            ...this.state.business,
+            [e.target.name]: e.target.value}
+        )};
     
-    // business = e => {
-    //     e.preventDefault();
-    //     this.props.business(this.state.business);
-    // }
+    business = e => {
+        e.preventDefault();
+        this.props.postBusiness(this.state.business);
+    }
 
     render() { 
         console.log('hello, welcome to the business page!!')
         return ( 
            <div className=' business-page'>
                 <h1>'A big welcome to all Businesses!'</h1>
+                {(this.props.businesses.map((business, index) => {
+                    return (
+                        <div key={index}>
+                            <h3>{business.id}</h3>
+                            <h3>{business.businessName}</h3>
+                            <h3>{business.phone}</h3>
+                            <h3>{business.businessAddr}</h3>
+                            <h3>{business.email}</h3>
+                            <h3>{business.usertype}</h3>
+                        </div>
+                    )
+                }))}
            </div>
          );
     }
 }
 
 const mapStateToProps = state => ({
-    prop: state.prop
+    businesses: state.businesses
 });
 
 export default connect(
     mapStateToProps,
-    { getBusiness }
+    { getBusiness, postBusiness }
 ) (Business);

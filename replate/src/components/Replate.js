@@ -6,12 +6,17 @@ import Business from './Business';
 import Volunteer from './Volunteer';
 import Donation from './Donation';
 import Foodbank from './Foodbank';
+import styled from 'styled-components';
+
+const ReplateDiv = styled.div`
+    
+`;
 
 class Replate extends Component {
     render() { 
         return ( 
             <Router>
-                <div className='replate-home'>
+                <ReplateDiv>
                     <Link to='/business'>Business</Link>
                     <Link to='/volunteer'>Volunteer</Link>
                     <Link to='/donations'>Donations</Link>
@@ -21,7 +26,7 @@ class Replate extends Component {
                     <PrivateRoute exact path='/volunteer' component={Volunteer} />
                     <PrivateRoute exact path='/donations' component={Donation} />
                     <PrivateRoute exact path='/foodbank' component={Foodbank} />
-                </div>
+                </ReplateDiv>
             </Router>
         );
     }

@@ -11,10 +11,6 @@ class Login extends Component {
         }
     };
 
-    // componentDidMount() {
-    //     this.props.getData();
-    // }
-    
     handleChanges = e => {
         this.setState({
             info: {
@@ -55,7 +51,7 @@ class Login extends Component {
                     />
                     <button type="submit">
                     
-                        {this.props.isLoggingIn ? (
+                        {this.props.loggingIn ? (
                             <Loader type="Ball-Triangle" color="blue" height='12' width='37' />
                         ) : (
                             'Log in'    
@@ -67,9 +63,10 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ loggingIn, err }) => {
     return {
-        isLoggingIn: state.isLoggingIn
+        loggingIn,
+        err
     };
 };
 

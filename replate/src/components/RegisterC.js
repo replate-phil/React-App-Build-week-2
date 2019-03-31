@@ -2,26 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { register, getData } from '../actions';
-import styled from 'styled-components';
 
-const WrapperDiv = styled.div`
-    flex-direction: column;
-    /* border: 1px solid black;
-    margin-top: 20px; */
-`;
-
-
-//Donation
+//Foodbank
 class RegisterC extends Component {
     constructor(props) {
         super(props)
         this.state = {
         userC: {
-            'name': '',
-            'quantity_lbs': '',
-            'picked_up': '',
-            'comment': '',
-            'business_id': ''
+            'businessName': '',
+            'businessAddr': '',
+            'phone': '',
+            'email': '',
+            'password': '',
+            'usertype': ''
         }}
     };
     
@@ -45,49 +38,57 @@ class RegisterC extends Component {
     };    
 
     render() {
-        console.log('entering donation!!');
+        console.log('entering Foodbank registration!!');
         return (
-            <WrapperDiv>
+            <div>
                 <form onSubmit={this.register}>
-                    <h2>Donations!</h2>
-                    <h5>Please Register your donation here!!</h5>
+                    <h2>Foodbank Registration</h2>
+                    <h5>Please Register for an account here!!</h5>
                     <input 
                         type='text'
-                        name='name'
-                        value={this.state.userC.name}
-                        placeholder='Enter Name'
+                        name='businessName'
+                        value={this.state.userC.businessName}
+                        placeholder='Enter Business Name'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
-                        name='quantity_lbs'
-                        value={this.state.userC.quantity_lbs}
-                        placeholder='Enter Quantity(lbs)'
+                        name='businessAddr'
+                        value={this.state.userC.businessAddr}
+                        placeholder='Enter Business Address'
                         onChange={this.handleChanges}
                         required
                     />
                     <input
                         type='text'
-                        name='picked_up'
-                        value={this.state.userC.picked_up}
-                        placeholder='Is item picked up?'
+                        name='phone'
+                        value={this.state.userC.phone}
+                        placeholder='Enter Phone'
                         onChange={this.handleChanges}
                         required
                     />
                     <input
                         type='text'
-                        name='comment'
-                        value={this.state.userC.comment}
-                        placeholder='Enter Comments'
+                        name='email'
+                        value={this.state.userC.email}
+                        placeholder='Enter Email'
+                        onChange={this.handleChanges}
+                        required
+                    />
+                    <input 
+                        type='password'
+                        name='password'
+                        value={this.state.userC.password}
+                        placeholder='Enter Password'
                         onChange={this.handleChanges}
                         required
                     />
                     <input 
                         type='text'
-                        name='business_id'
-                        value={this.state.userC.business_id}
-                        placeholder='Enter Business Id'
+                        name='usertype'
+                        value={this.state.userC.usertype}
+                        placeholder='Enter Usertype'
                         onChange={this.handleChanges}
                         required
                     />
@@ -96,11 +97,11 @@ class RegisterC extends Component {
                         {this.props.inRegister ? (
                             <Loader type="ThreeDots" color="green" height='12' width='37' />
                         ) : (
-                            'Donate!'    
+                            'Register'    
                         )}
                     </button> 
                 </form>
-            </WrapperDiv>
+            </div>
         );
     }
 }    

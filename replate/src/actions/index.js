@@ -4,6 +4,10 @@ export const REGISTER = 'REGISTER';
 export const LOGIN = 'LOGIN';
 export const FETCH_REPLATE_START = 'FETCH_REPLATE_START';
 export const FETCH_REPLATE_SUCCESS = 'FETCH_REPLATE_SUCCESS';
+export const FETCH_DONATION_SUCCESS = 'FETCH_DONATION_SUCCESS';
+export const FETCH_VOLUNTEER_SUCCESS = 'FETCH_VOLUNTEER_SUCCESS';
+export const FETCH_BUSINESS_SUCCESS = 'FETCH_BUSINESS_SUCCESS';
+export const FETCH_FOODBANK_SUCCESS = 'FETCH_FOODBANK_SUCCESS';
 export const FETCH_REPLATE_FAILURE = 'FETCH_REPLATE_FAILURE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
@@ -11,12 +15,6 @@ export const DELETE = 'DELETE';
 const URL = `https://replate-phil.herokuapp.com`;
 
 const id = `?id=(id)`;
-
-// const apiUrl =
-//     process.env.JWT_SECRET === 'default to admin'
-//     ? `${URL}`
-//     : 'http://localhost:5000';
-
 
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER });
@@ -39,17 +37,17 @@ export const login = info => dispatch => {
     });
 };
 
-export const getUsers = () => dispatch => {
-    dispatch({ type: FETCH_REPLATE_START });
-    return axios
-        .post(`${URL}`)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    };
+// export const getUsers = () => dispatch => {
+//     dispatch({ type: FETCH_REPLATE_START });
+//     return axios
+//         .post(`${URL}/`)
+//         .then(res => {
+//             console.log(res);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         });
+//     };
 
 export const getData = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
@@ -80,29 +78,29 @@ export const postData = () => dispatch => {
 export const getBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/business`)
+        .get(`${URL}/api/business/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_BUSINESS_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postBusiness = (replate) => dispatch => {
+export const postBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/business`, replate)
+        .post(`${URL}/api/business/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_BUSINESS_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const updateBusiness = (replate) => dispatch => {
+export const updateBusiness = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/business/${id}`, replate)
+        .put(`${URL}/api/business/${id}`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_BUSINESS_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));    
 };
@@ -112,7 +110,7 @@ export const deleteBusiness = (id) => dispatch => {
     axios
         .delete(`${URL}/api/business/${id}`)
         .then(res =>
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_BUSINESS_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));    
 };
@@ -120,27 +118,27 @@ export const deleteBusiness = (id) => dispatch => {
 export const getVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/volunteers`)
+        .get(`${URL}/api/volunteers/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_VOLUNTEER_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postVolunteer = (volunteer) => dispatch => {
+export const postVolunteer = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/volunteers`, volunteer)
+        .post(`${URL}/api/volunteers/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_VOLUNTEER_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const updateVolunteer = (replate) => dispatch => {
+export const updateVolunteer = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/volunteers/${id}`, replate)
+        .put(`${URL}/api/volunteers/${id}/`)
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -150,9 +148,9 @@ export const updateVolunteer = (replate) => dispatch => {
 export const deleteVolunteer = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/volunteers/${id}`)
+        .delete(`${URL}/api/volunteers/${id}/:id`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_VOLUNTEER_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -162,27 +160,27 @@ export const getDonation = () => dispatch => {
     axios
         .get(`${URL}/api/donations`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_DONATION_SUCCESS, payload: res.data.donations })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postDonation = (replate) => dispatch => {
+export const postDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/donations`, replate)
+        .post(`${URL}/api/donations/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_DONATION_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const updateDonation = (replate) => dispatch => {
+export const updateDonation = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/donations/${id}`, replate)
+        .put(`${URL}/api/donations/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_DONATION_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -190,9 +188,9 @@ export const updateDonation = (replate) => dispatch => {
 export const deleteDonation = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/donations/${id}`)
+        .delete(`${URL}/api/donations/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_DONATION_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -200,19 +198,19 @@ export const deleteDonation = (id) => dispatch => {
 export const getFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/foodbank`)
+        .get(`${URL}/api/foodbank/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_FOODBANK_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postFoodbank = (replate) => dispatch => {
+export const postFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/foodbank`, replate)
+        .post(`${URL}/api/foodbank/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_FOODBANK_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -220,9 +218,9 @@ export const postFoodbank = (replate) => dispatch => {
 export const updateFoodbank = (replate) => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/foodbank/${id}`, replate)
+        .put(`${URL}/api/foodbank/${id}/`, replate)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_FOODBANK_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
@@ -230,9 +228,9 @@ export const updateFoodbank = (replate) => dispatch => {
 export const deleteFoodbank = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/foodbank/${id}`)
+        .delete(`${URL}/api/foodbank/${id}/`)
         .then(res => 
-            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_FOODBANK_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };

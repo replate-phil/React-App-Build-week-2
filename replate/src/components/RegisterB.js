@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { register, getData } from '../actions';
 
-//Business/Foodbank
+//Business
 class RegisterB extends Component {
     constructor(props) {
         super(props)
