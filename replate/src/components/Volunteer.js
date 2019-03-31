@@ -51,58 +51,6 @@ class Volunteer extends Component {
                         </div>
                     )
                 }))}
-                <form onSubmit={this.volunteer}>
-                    <input 
-                        type='text'
-                        name='business_id' 
-                        value={this.state.volunteer.business_id}
-                        placeholder='Enter Business ID'
-                        onChange={this.handleChanges}
-                        required
-                    />
-                    <input 
-                        type='text'
-                        name='volunteer_id' 
-                        value={this.state.volunteer.volunteer_id}
-                        placeholder='Enter Volunteer ID'
-                        onChange={this.handleChanges}
-                        required
-                    />
-                    <input
-                        type='text'
-                        name='foodbank_id'
-                        value={this.state.volunteer.foodbank_id}
-                        placeholder='Enter Foodbank ID'
-                        onChange={this.handleChanges}
-                        required
-                    />
-                    <input
-                        type='text'
-                        name='donation_id'
-                        value={this.state.volunteer.donation_id}
-                        placeholder='Enter Donation ID'
-                        onChange={this.handleChanges}
-                        required
-                    />
-                    <input 
-                        type='text'
-                        name='completed'
-                        value={this.state.volunteer.completed}
-                        placeholder='Is it Completed?'
-                        onChange={this.handleChanges}
-                        required
-                    />  
-                    <input 
-                        type='text'
-                        name='comment'
-                        value={this.state.volunteer.comment}
-                        placeholder='Enter Comments'
-                        onChange={this.handleChanges}
-                        required
-                    />  
-
-                    <button type="submit">Enter!</button>
-                </form>
             </div>
         );
     }
