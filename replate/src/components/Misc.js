@@ -1,17 +1,68 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import Loader from 'react-loader-spinner';
-// import { register, getData } from '../actions';
-// import styled from 'styled-components';
-
-// const WrapperDiv = styled.div`
-//     flex-direction: column;
-//     /* border: 1px solid black;
-//     margin-top: 20px; */
-// `;
 
 
-// //Donation
+
+
+
+
+
+
+
+// import React from 'react';
+// // import { connect } from 'react-redux';
+// // import Loader from 'react-loader-spinner';
+// // import { register, getData } from '../actions';
+// // import styled from 'styled-components';
+
+// // const WrapperDiv = styled.div`
+// //     flex-direction: column;
+// //     /* border: 1px solid black;
+// //     margin-top: 20px; */
+// // `;
+
+
+// // Donation
+// const Donation = props => {
+//     return (
+//         <div className="donation-page">
+//             {props.donate.map(items => {
+//                 return (
+//                     <div className='data' key={items.name}> 
+//                         <h2>Name: {items.name}</h2>
+//                         <p>Quantity: {items.quantity_lbs}</p>
+//                         <p>Picked: {items.picked_up}</p>
+//                         <p>Comment: {items.comment}</p>
+//                         <p>Business Id: {items.business_id}</p>
+//                     </div>
+//                 )
+//             })}
+//         </div>
+//     );
+// };
+
+
+// export default Donation;
+
+
+
+
+
+/*
+
+// <h3>{props.name}</h3>
+// <strong>{props.name}</strong>
+// <p>{props.quantity_lbs}</p>
+// <p>{props.picked_up}</p>
+// <p>{props.comment}</p>
+// <p>{props.business_id}</p>
+
+// Donation.defaultProps = {
+//     name:'',
+//     quantity_lbs: '',
+//     picked_up: '',
+//     comment: '',
+//     business_id: ''    
+// };
+
 // class Register extends Component {
 //     constructor(props) {
 //         super(props)
@@ -112,4 +163,4 @@
 // export default connect(
 //     mapStateToProps,
 //     { register, getData }
-// ) (RegisterC);
+// ) (RegisterC); */

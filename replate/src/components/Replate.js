@@ -6,6 +6,7 @@ import Business from './Business';
 import Volunteer from './Volunteer';
 import Donation from './Donation';
 import Foodbank from './Foodbank';
+import Thank from './thankyou';
 import styled from 'styled-components';
 
 const ReplateDiv = styled.div`
@@ -26,6 +27,7 @@ class Replate extends Component {
                     <PrivateRoute exact path='/volunteer' component={Volunteer} />
                     <PrivateRoute exact path='/donations' component={Donation} />
                     <PrivateRoute exact path='/foodbank' component={Foodbank} />
+                    <PrivateRoute exact path='/thank' component={Thank} />
                 </ReplateDiv>
             </Router>
         );
