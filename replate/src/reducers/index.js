@@ -30,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inRegister: true,
-                initialState: action.payload
+                ...action.payload
             };
         case LOGIN:
             return {
@@ -50,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
-                state: action.payload
+                ...action.payload
             };
         case FETCH_REP_START:
             return {
