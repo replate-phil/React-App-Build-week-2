@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getVolunteer, updateVolunteer } from '../actions';
+import { getData, postData } from '../actions';
 
 class Volunteer extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            volunteer: {
-                'business_id': '',
-                'volunteer_id': '',
-                'foodbank_id': '',
-                'donation_id':'',
-                'completed': '',
-                'comment': ''
+            volunteers: {
+                first_name: '',
+                last_name: '',
+                address: '',
+                phone: '',
+                email: '',
+                usertype: ''
             }
         }
     };
 
     componentDidMount() {
-        this.props.getVolunteer(this.state.volunteer);
+        this.props.getData(this.state.volunteer);
     };
     
     handleChanges = e => {
         this.setState({
-            volunteer: {
-            ...this.state.volunteer,
+            volunteers: {
+            ...this.state.volunteers,
             [e.target.name]: e.target.value}
         });
     };
 
     // volunteer = e => {
     //     e.preventDefault();
-    //     this.props.updateVolunteer(this.state.volunteer);
+    //     this.props.postData(this.state.volunteers);
     // }
 
     render() { 
@@ -39,15 +39,15 @@ class Volunteer extends Component {
         return (
             <div>
                 <h1>'Hello volunteers!'</h1>
-                {(this.props.volunteers.map((volunteer, index) => {
+                {(this.props.volunteer.map((volunteers, index) => {
                     return (
                         <div key={index}>
-                            <h3>{volunteer.business_id}</h3>
-                            <h3>{volunteer.volunteer_id}</h3>
-                            <h3>{volunteer.foodbank_id}</h3>
-                            <h3>{volunteer.donation_id}</h3>
-                            <h3>{volunteer.completed}</h3>
-                            <h3>{volunteer.comment}</h3>
+                            <h3>{volunteers.first_name}</h3>
+                            <h3>{volunteers.last_name}</h3>
+                            <h3>{volunteers.address}</h3>
+                            <h3>{volunteers.phone}</h3>
+                            <h3>{volunteers.email}</h3>
+                            <h3>{volunteers.usertype}</h3>
                         </div>
                     )
                 }))}
@@ -56,11 +56,11 @@ class Volunteer extends Component {
     }
 }    
 
-const mapStateToProps = ({volunteers}) => ({
-    volunteers
+const mapStateToProps = (state) => ({
+    volunteer: state.volunteer
 });
 
 export default connect(
     mapStateToProps,
-    { getVolunteer, updateVolunteer }
+    { getData, postData }
 ) (Volunteer);

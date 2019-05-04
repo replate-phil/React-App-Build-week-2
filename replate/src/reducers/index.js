@@ -3,17 +3,19 @@ import {
     LOGIN, 
     FETCH_REPLATE_START, 
     FETCH_REPLATE_SUCCESS, 
-    FETCH_REP_SUCCESS, 
-    FETCH_REPL_SUCCESS, 
+    FETCH_REP_START,
+    FETCH_REP_SUCCESS,
+     
+    // FETCH_REPL_SUCCESS, 
     FETCH_REPLATE_FAILURE, 
-    UPDATE, DELETE } from '../actions';
+    // UPDATE, DELETE 
+} from '../actions';
 
 const initialState = {
-    replates: '',
-    businesses: [],
+    volunteer: [],
     donations: [],
-    volunteers: [],
-    foodbanks: [],
+    business: [],
+    foodbank: [],
     inRegister: false,
     fetchingData: false,
     // updatingData: false,
@@ -28,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 inRegister: true,
-                users: action.payload
+                initialState: action.payload
             };
         case LOGIN:
             return {
@@ -48,7 +50,13 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 err: '',
                 fetchingData: false,
-                ...action.payload
+                state: action.payload
+            };
+        case FETCH_REP_START:
+            return {
+                ...state,
+                err: '',
+                fetchingData: true
             };
         case FETCH_REP_SUCCESS:
             console.log(action.payload);
@@ -58,36 +66,36 @@ const rootReducer = (state = initialState, action) => {
                 fetchingData: false,
                 ...action.payload
             }; 
-        case FETCH_REPL_SUCCESS:
-            console.log(action.payload);
-            return {
-                ...state,
-                err: '',
-                fetchingData: false,
-                ...action.payload
-            };
+        // case FETCH_REPL_SUCCESS:
+        //     console.log(action.payload);
+        //     return {
+        //         ...state,
+        //         err: '',
+        //         fetchingData: false,
+        //         ...action.payload
+        //     };
         case FETCH_REPLATE_FAILURE:
             return {
                 ...state,
                 err: action.payload,
                 fetchingData: false
             };
-        case UPDATE:
-            return {
-                ...state,
-                err: '',
-                fetchingData: false,
-                updatingData: true,
-                volunteers: [...state.replate]
-            }; 
-        case DELETE:
-            return {
-                ...state,
-                err: '',
-                fetchingData: false,
-                deletingData: true,
-                replates: [...state.replate]
-            };       
+        // case UPDATE:
+        //     return {
+        //         ...state,
+        //         err: '',
+        //         fetchingData: false,
+        //         updatingData: true,
+        //         volunteers: [...state.replate]
+        //     }; 
+        // case DELETE:
+        //     return {
+        //         ...state,
+        //         err: '',
+        //         fetchingData: false,
+        //         deletingData: true,
+        //         replates: [...state.replate]
+        //     };       
         default:
             return state;
     }    

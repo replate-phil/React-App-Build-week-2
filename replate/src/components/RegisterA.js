@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { register, getData } from '../actions';
+import { register } from '../actions';
 import styled from 'styled-components';
 
 const Registerpage = styled.div`
@@ -13,7 +13,9 @@ const Page = styled.div`
 `;
 //volunteer
 class RegisterA extends Component {
-    state = {
+    constructor(props) {
+        super(props)
+        this.state = {
         userA: {
             'first_name': '',
             'last_name': '',
@@ -22,12 +24,12 @@ class RegisterA extends Component {
             'phone': '',
             'address': '',
             'usertype': ''
-        }
+        }}
     };
     
-    componentDidMount() {
-        this.props.getData();
-    }
+    // componentDidMount() {
+    //     this.props.getVolunteer();
+    // }
 
     handleChanges = e => {
         this.setState({
@@ -129,5 +131,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { register, getData }
+    { register }
 ) (RegisterA);

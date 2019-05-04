@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFoodbank, postDonation} from '../actions';
+import { getData, postData} from '../actions';
 
 class Foodbank extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            foodbank: {
+            foodbanks: {
                 'businessName': '',
                 'businessAddr': '',
                 'phone': '',
@@ -18,36 +18,38 @@ class Foodbank extends Component {
     };
 
     componentDidMount() {
-        this.props.getFoodbank(this.props.foodbank);
+        this.props.getData(this.state.foodbank);
     }
     
 
     handleChanges = e => {
         this.setState({
-            ...this.state.foodbank,
+            foodbanks: {
+            ...this.state.foodbanks,
             [e.target.name]: e.target.value}
-        )};
+        });
+    };
     
-    foodbank = e => {
-        e.preventDefault();
-        this.props.postFoodbank(this.state.foodbank);
-    }
+    // foodbank = e => {
+    //     e.preventDefault();
+    //     this.props.postData(this.state.foodbanks);
+    // }
 
     render() { 
         console.log('hello, welcome to the foodbank page!!')
         return ( 
            <div className='foodbank-page'>
                 <h1>'Welcome to the FoodBank!'</h1>
-                {(this.props.foodbanks.map((foodbank, index) => {
-                    console.log(foodbank);
+                {(this.props.foodbank.map((foodbanks, index) => {
+                    console.log(foodbanks);
                     return (
                         <div key={index}>
-                            <h3>{foodbank.businessName}</h3>
-                            <h3>{foodbank.businessAddr}</h3>
-                            <h3>{foodbank.phone}</h3>
-                            <h3>{foodbank.email}</h3>
-                            <h3>{foodbank.password}</h3>
-                            <h3>{foodbank.usertype}</h3>
+                            <h3>{foodbanks.businessName}</h3>
+                            <h3>{foodbanks.businessAddr}</h3>
+                            <h3>{foodbanks.phone}</h3>
+                            <h3>{foodbanks.email}</h3>
+                            <h3>{foodbanks.password}</h3>
+                            <h3>{foodbanks.usertype}</h3>
                         </div>
                     )
                 }))}
@@ -56,11 +58,11 @@ class Foodbank extends Component {
     }
 }
 
-const mapStateToProps = ({foodbanks}) => ({
-    foodbanks
+const mapStateToProps = (state) => ({
+    foodbank: state.foodbank
 });
 
 export default connect(
     mapStateToProps,
-    { getFoodbank, postDonation }
+    { getData, postData }
 ) (Foodbank);

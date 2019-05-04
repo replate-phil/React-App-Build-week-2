@@ -19,7 +19,7 @@ class RegisterB extends Component {
     };
     
     componentDidMount() {
-        this.props.getData();
+        this.props.getData(this.props.businesses);
     }
 
     handleChanges = e => {

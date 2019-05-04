@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import PrivateRoute from './Authentication';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+// import PrivateRoute from './Authentication';
 import Business from './Business';
 import Volunteer from './Volunteer';
 import Donation from './Donation';
@@ -23,11 +23,11 @@ class Replate extends Component {
                     <Link to='/donations'>Donations</Link>
                     <Link to='/foodbank'>Foodbank</Link>
 
-                    <PrivateRoute exact path='/business' component={Business} />
-                    <PrivateRoute exact path='/volunteer' component={Volunteer} />
-                    <PrivateRoute exact path='/donations' component={Donation} />
-                    <PrivateRoute exact path='/foodbank' component={Foodbank} />
-                    <PrivateRoute exact path='/thank' component={Thank} />
+                    <Route exact path='/business' component={Business} />
+                    <Route exact path='/volunteer' component={Volunteer} />
+                    <Route exact path='/donations' component={Donation} />
+                    <Route exact path='/foodbank' component={Foodbank} />
+                    <Route exact path='/thank' component={Thank} />
                 </ReplateDiv>
             </Router>
         );

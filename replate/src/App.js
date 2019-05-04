@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Replate from './components/Replate';
 import Public from './components/Public';
-import PrivateRoute from './components/Authentication';
+// import PrivateRoute from './components/Authentication';
 import Register from './components/RegisterMain';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path='/public' component={Public} />
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
-          <PrivateRoute exact path='/replate' component={Replate} />
+          <Route exact path='/replate' component={Replate} />
 
         </div>
       </Router>

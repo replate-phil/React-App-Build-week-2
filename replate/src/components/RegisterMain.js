@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import PrivateRoute from './Authentication';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+// import PrivateRoute from './Authentication';
 import RegisterA from './RegisterA';
 import RegisterB from './RegisterB';
 import RegisterC from './RegisterC';
@@ -24,9 +24,9 @@ class Register extends Component {
                                     
                     <Link to='/register3'>Foodbank</Link>
                    
-                    <PrivateRoute exact path='/register1' component={RegisterA} />
-                    <PrivateRoute exact path='/register2' component={RegisterB} />
-                    <PrivateRoute exact path='/register3' component={RegisterC} />
+                    <Route exact path='/register1' component={RegisterA} />
+                    <Route exact path='/register2' component={RegisterB} />
+                    <Route exact path='/register3' component={RegisterC} />
                 </RegisterHome>
             </Router>
         );

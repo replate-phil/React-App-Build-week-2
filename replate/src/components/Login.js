@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { login, getData } from '../actions';
+import { login } from '../actions';
 
 class Login extends Component {
     state = {
@@ -49,6 +49,7 @@ class Login extends Component {
                         onChange={this.handleChanges}
                         required
                     />
+                  
                     <button type="submit">
                     
                         {this.props.loggingIn ? (
@@ -72,5 +73,5 @@ const mapStateToProps = ({ loggingIn, err }) => {
 
 export default connect(
     mapStateToProps,
-    { login, getData }
+    { login }
 ) (Login);

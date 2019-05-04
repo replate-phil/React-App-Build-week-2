@@ -164,3 +164,106 @@
 //     mapStateToProps,
 //     { register, getData }
 // ) (RegisterC); */
+
+
+
+// donations
+
+/*    
+   */
+ /*
+// export default Donations;
+ componentDidMount() {
+        this.getDonation('https://replate-phil.herokuapp.com/api/donations/');
+    }
+
+    getDonation = URL => {
+        fetch(URL)
+            .then(res => {return res.json();
+            })
+            .then(data => {this.setState({ donation: data.results });
+            })
+            .catch(err => {console.log(err)
+            });
+    };
+
+    render() {
+        console.log('Thank you for your donation')
+        return (
+            <div className='donations-page'>
+                <Donation donate={this.state.donation}/>
+            </div>
+        );
+    }
+}
+
+
+Donation.defaultProps = {
+    donations: [],
+};
+handleClick () {
+    //         return (
+    //             this.props.history.push('/thank')
+                
+    //         );
+    //     };
+    
+    //     render() {
+    //         const {name, quantity_lbs, 
+    //         picked_up, comment, business_id} = this.state.donation;
+    //             return (
+    //                 <div>
+    //                     <h1>'Welcome, Please Donate!'</h1>
+    //                     <form onSubmit={this.handleClick}>
+    //                         <strong>
+    //                         <FormattedMessage
+    //                             id='Donations'
+    //                             defaultMessage={`
+    //                             Name: ${name}`} 
+    //                         /><br/>
+    //                         </strong>
+    //                         <strong>
+    //                         <FormattedMessage
+    //                             id='Donations'
+    //                             defaultMessage={`
+    //                             Quantity: ${quantity_lbs}`} 
+    //                         /><br/>
+    //                         </strong>
+    //                         <strong>
+    //                         <FormattedMessage
+    //                             id='Donations'
+    //                             defaultMessage={`
+    //                             Picked: ${picked_up}`} 
+    //                         /><br/>
+    //                         </strong>
+    //                         <strong>
+    //                         <FormattedMessage
+    //                         id='Donations'
+    //                         defaultMessage={`
+    //                         Comment: ${comment}`}
+    //                         /><br/>   
+    //                         </strong>
+    //                         <strong>
+    //                         <FormattedMessage
+    //                             id='Donations' 
+    //                             defaultMessage={`
+    //                             Business Id: ${business_id}`}
+    //                         /><br/>
+    //                         </strong>
+    //                         <button type="submit">Donate!</button>
+    //                     </form>   
+    //                 </div>
+    //             );
+    //     }
+    // }   
+    
+    // const mapStateToProps = ({donation}) => ({
+    //     donation
+    // });
+    
+    // export default connect(
+    //     mapStateToProps,
+    //     { FormattedMessage}
+    // ) (Donations);
+  
+*/

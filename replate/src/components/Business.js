@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getBusiness, postBusiness } from '../actions';
+import { getData, postData } from '../actions';
+import styled from 'styled-components';
+
+const BusinessPage = styled.div`
+ line-height: .4;
+ color: chocolate;
+`;
 
 class Business extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            business: {
+            businesses: {
                 businessName: '',
                 businessAddr: '',
                 phone: '',
@@ -17,47 +23,49 @@ class Business extends Component {
     };
 
     componentDidMount() {
-        this.props.getBusiness(this.props.business);
+        this.props.getData(this.state.business);
     }
-    
 
     handleChanges = e => {
         this.setState({
-            ...this.state.business,
+            businesses: {
+            ...this.state.businesses,
             [e.target.name]: e.target.value}
-        )};
+        });
+    };
     
-    business = e => {
-        e.preventDefault();
-        this.props.postBusiness(this.state.business);
-    }
+    // business = e => {
+    //     e.preventDefault();
+    //     this.props.postData(this.state.businesses);
+    // }
 
     render() { 
         console.log('hello, welcome to the business page!!')
         return ( 
-           <div className=' business-page'>
+           <BusinessPage>
                 <h1>'A big welcome to all Businesses!'</h1>
-                {(this.props.businesses.map((business, index) => {
+                {(this.props.business.map((businesses, index) => {
                     return (
                         <div key={index}>
-                            <h3>{business.businessName}</h3>
-                            <h3>{business.businessAddr}</h3>
-                            <h3>{business.phone}</h3>
-                            <h3>{business.email}</h3>
-                            <h3>{business.usertype}</h3>
+                            <p>{businesses.businessName}</p>
+                            <p>{businesses.businessAddr}</p>
+                            <p>{businesses.phone}</p>
+                            <p>{businesses.email}</p>
+                            <p>{businesses.usertype}</p>
                         </div>
                     )
                 }))}
-           </div>
-         );
+           </BusinessPage>
+        );
     }
 }
 
-const mapStateToProps = ({businesses}) => ({
-    businesses
+const mapStateToProps = (state) => ({
+    business: state.business,
+    businesses: state.businesses
 });    
 
 export default connect(
     mapStateToProps,
-    { getBusiness, postBusiness }
+    { getData, postData }
 ) (Business);
