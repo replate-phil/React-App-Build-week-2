@@ -4,26 +4,30 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Replate from './components/Replate';
 import Public from './components/Public';
-// import PrivateRoute from './components/Authentication';
+import PrivateRoute from './components/Authentication';
 import Register from './components/RegisterMain';
+import styled from 'styled-components';
+
+const Homepage = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  padding-bottom: 20px;
+`;
 
 function App() {
     return (
       <Router>
         <div className='App'>
-        <div>
-          <ul>
+        <Homepage>
               <Link to ='/public'>Public</Link>
-            <br/>
               <Link to ='/'>Login</Link>
-            <br/>
               <Link to ='/register'>Register</Link>
-          </ul>
-        </div>
+        </Homepage>
           <Route path='/public' component={Public} />
           <Route exact path='/' component={Login} />
           <Route path='/register' component={Register} />
-          <Route exact path='/replate' component={Replate} />
+          <PrivateRoute exact path='/replate' component={Replate} />
 
         </div>
       </Router>
