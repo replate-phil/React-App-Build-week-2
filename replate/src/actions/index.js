@@ -33,7 +33,7 @@ const id = `:id`;
 
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER });
-    return axios
+    axios
         .post(`${URL}/api/register`, creds)
         .then(res => {
             console.log(res);
@@ -41,19 +41,19 @@ export const register = creds => dispatch => {
         .catch(err => {
             console.log(err);
         });
-    };
+};
 
 export const login = info => dispatch => {
     dispatch({ type: LOGIN });
-    return axios
-    .post(`${URL}/api/login`, info)
-    .then(res => {
-        localStorage.setItem('token', res.data.token);//sends token to local storage as text not undefined
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: LOGIN_FAILURE, payload: err.res });
-    });
+    axios
+        .post(`${URL}/api/login`, info)
+        .then(res => {
+            localStorage.setItem('token', res.data.token);//sends token to local storage as text not undefined
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+        dispatch({ type: LOGIN_FAILURE, payload: err.res });
+        });
 };
 
 export const getData = () => dispatch => {
@@ -91,7 +91,9 @@ export const postData = (businesses, donation, volunteers, foodbanks) => dispatc
 export const getBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/business`)
+        .get(`${URL}/api/business`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )

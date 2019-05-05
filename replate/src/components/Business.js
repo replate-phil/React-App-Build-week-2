@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData, postData } from '../actions';
+import { getBusiness, postData } from '../actions';
 import styled from 'styled-components';
 
 const BusinessPage = styled.div`
@@ -23,7 +23,7 @@ class Business extends Component {
     };
 
     componentDidMount() {
-        this.props.getData(this.state.business);
+        this.props.getBusiness(this.state.businesses);
     }
 
     handleChanges = e => {
@@ -61,11 +61,10 @@ class Business extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    business: state.business,
-    businesses: state.businesses
+    business: state.business
 });    
 
 export default connect(
     mapStateToProps,
-    { getData, postData }
+    { getBusiness, postData }
 ) (Business);

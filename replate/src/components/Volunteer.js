@@ -18,7 +18,7 @@ class Volunteer extends Component {
     };
 
     componentDidMount() {
-        this.props.getData(this.state.volunteer);
+        this.props.getData();
     };
     
     handleChanges = e => {
