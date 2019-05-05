@@ -10,7 +10,8 @@ import Thank from './thankyou';
 import styled from 'styled-components';
 
 const ReplateDiv = styled.div`
-    
+    display: flex;
+    justify-content: space-evenly;
 `;
 
 class Replate extends Component {
@@ -22,13 +23,12 @@ class Replate extends Component {
                     <Link to='/volunteer'>Volunteer</Link>
                     <Link to='/donations'>Donations</Link>
                     <Link to='/foodbank'>Foodbank</Link>
-
+                </ReplateDiv>
                     <Route exact path='/business' component={Business} />
                     <Route exact path='/volunteer' component={Volunteer} />
                     <Route exact path='/donations' component={Donation} />
                     <Route exact path='/foodbank' component={Foodbank} />
-                    <Route exact path='/thank' component={Thank} />
-                </ReplateDiv>
+                    <Route exact path='/thank' component={Thank} /> 
             </Router>
         );
     }

@@ -5,8 +5,9 @@ import styled from 'styled-components';
 const Publicpage = styled.div`
     align-self: center;
     color: brown;
-    border: 1px solid chocolate;
-    border-radius: 5px;
+    /* border: 2px dashed chocolate;
+    border-style: double;
+    border-radius: 10px; */
     width: 400px;    
 `;
 
@@ -15,7 +16,7 @@ class Public extends Component {
         console.log('entering public page!!');
         return (
             <Publicpage>
-                <h1>Hello, Please Log in!</h1>
+                <h1>Hello, Please Log in for further information, Thank You!</h1>
                 
             </Publicpage>       
         );          

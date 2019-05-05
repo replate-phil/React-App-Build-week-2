@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getData, postData } from '../actions';
+import styled from 'styled-components';
+
+const VolunteerPage = styled.div`
+ line-height: .4;
+ color: chocolate;
+`;
 
 class Volunteer extends Component {
     constructor() {
@@ -37,7 +43,7 @@ class Volunteer extends Component {
     render() { 
         console.log('hello, welcome to the volunteers page!!')
         return (
-            <div>
+            <VolunteerPage>
                 <h1>'Hello volunteers!'</h1>
                 {(this.props.volunteer.map((volunteers, index) => {
                     return (
@@ -51,7 +57,7 @@ class Volunteer extends Component {
                         </div>
                     )
                 }))}
-            </div>
+            </VolunteerPage>
         );
     }
 }    

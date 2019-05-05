@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { register } from '../actions';
-import styled from 'styled-components';
 
-const Registerpage = styled.div`
-    margin: 30px;
-`;
-
-const Page = styled.div`
-    
-`;
 //volunteer
 class RegisterA extends Component {
     constructor(props) {
@@ -49,12 +41,10 @@ class RegisterA extends Component {
     render() {
         console.log('entering volunteer registration!!');
         return (
-            <Registerpage>
+            <div>
                 <form onSubmit={this.register}>
-                <Page>
                     <h2>Volunteer Registration</h2>
                     <h5>Please Register for an account here!!</h5>
-                </Page>
                     <input
                         type='text'    
                         name='first_name'
@@ -120,7 +110,7 @@ class RegisterA extends Component {
                         )}
                     </button> 
                 </form>
-            </Registerpage>
+            </div>
         );
     }
 }    

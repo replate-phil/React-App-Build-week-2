@@ -23,11 +23,10 @@ class Register extends Component {
                     <Link to='/register2'>Business</Link>                   
                                     
                     <Link to='/register3'>Foodbank</Link>
-                   
+                </RegisterHome>   
                     <Route exact path='/register1' component={RegisterA} />
                     <Route exact path='/register2' component={RegisterB} />
-                    <Route exact path='/register3' component={RegisterC} />
-                </RegisterHome>
+                    <Route exact path='/register3' component={RegisterC} /> 
             </Router>
         );
     }

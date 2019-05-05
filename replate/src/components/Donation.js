@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getData, postData } from '../actions';
+import styled from 'styled-components';
+
+const DonationPage = styled.div`
+ line-height: .4;
+ color: chocolate;
+`;
 
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 // import {FormattedMessage} from 'react-intl';
@@ -43,7 +49,7 @@ class Donations extends Component {
     render() { 
         console.log('hello, welcome to the donation page!!')
         return ( 
-    <div className='donation-page'>
+    <DonationPage>
         <h1>'Please Donate!'</h1>
         {(this.props.donations.map((donation, index) => {
             return (
@@ -99,7 +105,7 @@ class Donations extends Component {
         />  
         <button type="submit">Donate!</button>
     </form> 
-    </div>                
+    </DonationPage>                
 )}}     
                 
 const mapStateToProps = (state) => ({

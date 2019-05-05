@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 class Thank extends Component {
     render() {
         console.log('entering thanking page!!');

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getData, postData} from '../actions';
+import styled from 'styled-components';
+
+const FoodbankPage = styled.div`
+ line-height: .4;
+ color: chocolate;
+`;
 
 class Foodbank extends Component {
     constructor() {
@@ -38,7 +44,7 @@ class Foodbank extends Component {
     render() { 
         console.log('hello, welcome to the foodbank page!!')
         return ( 
-           <div className='foodbank-page'>
+           <FoodbankPage>
                 <h1>'Welcome to the FoodBank!'</h1>
                 {(this.props.foodbank.map((foodbanks, index) => {
                     console.log(foodbanks);
@@ -53,7 +59,7 @@ class Foodbank extends Component {
                         </div>
                     )
                 }))}
-           </div>
+           </FoodbankPage>
          );
     }
 }
