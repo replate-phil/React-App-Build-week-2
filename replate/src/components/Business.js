@@ -4,8 +4,8 @@ import { getBusiness, postBusiness } from '../actions';
 import styled from 'styled-components';
 
 const BusinessPage = styled.div`
- line-height: .4;
- color: chocolate;
+ line-height: .2;
+ color: black;
 `;
 
 class Business extends Component {

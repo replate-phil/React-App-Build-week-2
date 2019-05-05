@@ -4,8 +4,8 @@ import { getFoodbank, postFoodbank} from '../actions';
 import styled from 'styled-components';
 
 const FoodbankPage = styled.div`
- line-height: .4;
- color: chocolate;
+ line-height: .2;
+ color: black;
 `;
 
 class Foodbank extends Component {
@@ -49,11 +49,11 @@ class Foodbank extends Component {
                     console.log(foodbanks);
                     return (
                         <div key={index}>
-                            <h3>{foodbanks.businessName}</h3>
-                            <h3>{foodbanks.businessAddr}</h3>
-                            <h3>{foodbanks.phone}</h3>
-                            <h3>{foodbanks.email}</h3>
-                            <h3>{foodbanks.usertype}</h3>
+                            <p>{foodbanks.businessName}</p>
+                            <p>{foodbanks.businessAddr}</p>
+                            <p>{foodbanks.phone}</p>
+                            <p>{foodbanks.email}</p>
+                            <p>{foodbanks.usertype}</p>
                         </div>
                     )
                 }))}

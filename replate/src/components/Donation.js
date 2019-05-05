@@ -4,8 +4,8 @@ import { getDonation, postDonation } from '../actions';
 import styled from 'styled-components';
 
 const DonationPage = styled.div`
- line-height: .4;
- color: chocolate;
+ line-height: .2;
+ color: black;
 `;
 
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -39,7 +39,7 @@ class Donations extends Component {
 
     addDonation = e => {
         e.preventDefault();
-        this.props.postDonation(this.state.donations)
+        this.props.postDonation(this.state.donation)
         this.props.history.push('/thank');
     }
    
@@ -53,11 +53,11 @@ class Donations extends Component {
         {(this.props.donations.map((donation, index) => {
             return (
                 <div key={index}>
-                    <h3>{donation.name}</h3>
-                    <h3>{donation.quantity_lbs}</h3>
-                    <h3>{donation.picked_up}</h3>
-                    <h3>{donation.comment}</h3>
-                    <h3>{donation.business_id}</h3>
+                    <p>{donation.name}</p>
+                    <p>{donation.quantity_lbs}</p>
+                    <p>{donation.picked_up}</p>
+                    <p>{donation.comment}</p>
+                    <p>{donation.business_id}</p>
                 </div>
             )
         }))}             

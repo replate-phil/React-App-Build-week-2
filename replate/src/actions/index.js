@@ -83,8 +83,8 @@ export const postData = () => dispatch => {
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         })
         .catch(err => {
-            console.log(err.res);
-            dispatch({ type: FETCH_REPLATE_FAILURE, payload: err.res });
+            console.log(err);
+            dispatch({ type: FETCH_REPLATE_FAILURE, payload: err });
         });
 };
 
@@ -196,10 +196,10 @@ export const getDonation = () => dispatch => {
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const postDonation = () => dispatch => {
+export const postDonation = (donations) => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/donations`, {
+        .post(`${URL}/api/donations`, donations, {
             headers: {Authorization: localStorage.getItem('token')}
         })
         .then(res => 

@@ -53,7 +53,6 @@ const rootReducer = (state = initialState, action) => {
                 ...action.payload
             };
         case FETCH_REPLATE_FAILURE:
-            console.log(action.payload);
             return {
                 ...state,
                 err: action.payload,

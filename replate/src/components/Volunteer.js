@@ -4,8 +4,8 @@ import { getVolunteer, postVolunteer } from '../actions';
 import styled from 'styled-components';
 
 const VolunteerPage = styled.div`
- line-height: .4;
- color: chocolate;
+ line-height: .2;
+ color: black;
 `;
 
 class Volunteer extends Component {
@@ -50,12 +50,12 @@ class Volunteer extends Component {
                     console.log(volunteers);
                     return (
                         <div key={index}>
-                            <h3>{volunteers.first_name}</h3>
-                            <h3>{volunteers.last_name}</h3>
-                            <h3>{volunteers.address}</h3>
-                            <h3>{volunteers.phone}</h3>
-                            <h3>{volunteers.email}</h3>
-                            <h3>{volunteers.usertype}</h3>
+                            <p>{volunteers.first_name}</p>
+                            <p>{volunteers.last_name}</p>
+                            <p>{volunteers.address}</p>
+                            <p>{volunteers.phone}</p>
+                            <p>{volunteers.email}</p>
+                            <p>{volunteers.usertype}</p>
                         </div>
                     )
                 }))}
