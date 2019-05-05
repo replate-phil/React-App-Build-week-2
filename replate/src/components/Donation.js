@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData, postData } from '../actions';
+import { getDonation, postDonation } from '../actions';
 import styled from 'styled-components';
 
 const DonationPage = styled.div`
@@ -16,18 +16,17 @@ class Donations extends Component {
         super();
         this.state = {
             donation: {
-                name: '',
-                quantity_lbs: '',
-                picked_up: '',
-                comment: '',
-                business_id: '',
-                thanks: 'Thank You!'
+                'name': '',
+                'quantity_lbs': '',
+                'picked_up': '',
+                'comment': '',
+                'business_id': '',
             }
         };
     }
 
     componentDidMount() {
-        this.props.getData(this.state.donations);
+        this.props.getDonation();
     }
 
     handleChanges = e => {
@@ -40,7 +39,7 @@ class Donations extends Component {
 
     addDonation = e => {
         e.preventDefault();
-        this.props.postData(this.state.donation)
+        this.props.postDonation(this.state.donations)
         this.props.history.push('/thank');
     }
    
@@ -114,7 +113,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { getData, postData}
+    { getDonation, postDonation}
 ) (Donations);
     
 

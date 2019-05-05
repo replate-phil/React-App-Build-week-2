@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData, postData} from '../actions';
+import { getFoodbank, postFoodbank} from '../actions';
 import styled from 'styled-components';
 
 const FoodbankPage = styled.div`
@@ -24,10 +24,9 @@ class Foodbank extends Component {
     };
 
     componentDidMount() {
-        this.props.getData(this.state.foodbank);
+        this.props.getFoodbank();
     }
     
-
     handleChanges = e => {
         this.setState({
             foodbanks: {
@@ -38,7 +37,7 @@ class Foodbank extends Component {
     
     // foodbank = e => {
     //     e.preventDefault();
-    //     this.props.postData(this.state.foodbanks);
+    //     this.props.postFoodbank(this.state.foodbank);
     // }
 
     render() { 
@@ -54,7 +53,6 @@ class Foodbank extends Component {
                             <h3>{foodbanks.businessAddr}</h3>
                             <h3>{foodbanks.phone}</h3>
                             <h3>{foodbanks.email}</h3>
-                            <h3>{foodbanks.password}</h3>
                             <h3>{foodbanks.usertype}</h3>
                         </div>
                     )
@@ -70,5 +68,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { getData, postData }
+    { getFoodbank, postFoodbank }
 ) (Foodbank);

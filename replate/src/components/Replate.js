@@ -42,32 +42,4 @@ export default connect(
     mapStateToProps,
     { Business, Volunteer, Donation, Foodbank }
   ) (Replate);
-
-
-//  constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         replate: {
-    //             Business: '',
-
-    //         }
-    //       }
-    // }
-
-    // // componentDidMount() {
-    // //     this.props.getData(this.state.replates);
-    // // }
-
-    // // addReplate = e => {
-    // //     e.preventDefault();
-    // //     this.props.postData(this.state.replate)
-    // // }
-
-    // handleChanges = e => {
-    //     this.setState({
-    //         replate: {
-    //             ...this.state.replate,
-    //             [e.target.name]: e.target.value}
-    //         });
-    //     };
     

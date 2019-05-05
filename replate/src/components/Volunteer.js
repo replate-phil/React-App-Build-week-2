@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getData, postData } from '../actions';
+import { getVolunteer, postVolunteer } from '../actions';
 import styled from 'styled-components';
 
 const VolunteerPage = styled.div`
@@ -13,18 +13,19 @@ class Volunteer extends Component {
         super();
         this.state = {
             volunteers: {
-                first_name: '',
-                last_name: '',
-                address: '',
-                phone: '',
-                email: '',
-                usertype: ''
+                'first_name': '',
+                'last_name': '',
+                'address': '',
+                'phone': '',
+                'email': '',
+                'password': '',
+                'usertype': ''
             }
         }
     };
 
     componentDidMount() {
-        this.props.getData();
+        this.props.getVolunteer();
     };
     
     handleChanges = e => {
@@ -37,7 +38,7 @@ class Volunteer extends Component {
 
     // volunteer = e => {
     //     e.preventDefault();
-    //     this.props.postData(this.state.volunteers);
+    //     this.props.postVolunteer(this.state.volunteer);
     // }
 
     render() { 
@@ -46,6 +47,7 @@ class Volunteer extends Component {
             <VolunteerPage>
                 <h1>'Hello volunteers!'</h1>
                 {(this.props.volunteer.map((volunteers, index) => {
+                    console.log(volunteers);
                     return (
                         <div key={index}>
                             <h3>{volunteers.first_name}</h3>
@@ -68,5 +70,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { getData, postData }
+    { getVolunteer, postVolunteer }
 ) (Volunteer);

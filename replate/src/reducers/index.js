@@ -3,12 +3,12 @@ import {
     LOGIN, 
     FETCH_REPLATE_START, 
     FETCH_REPLATE_SUCCESS, 
-    FETCH_REP_START,
-    FETCH_REP_SUCCESS,
-     
-    // FETCH_REPL_SUCCESS, 
     FETCH_REPLATE_FAILURE, 
-    // UPDATE, DELETE 
+    // FETCH_REP_START,
+    // FETCH_REP_SUCCESS,
+    // FETCH_REPL_SUCCESS, 
+    // UPDATE,
+    // DELETE 
 } from '../actions';
 
 const initialState = {
@@ -52,20 +52,27 @@ const rootReducer = (state = initialState, action) => {
                 fetchingData: false,
                 ...action.payload
             };
-        case FETCH_REP_START:
-            return {
-                ...state,
-                err: '',
-                fetchingData: true
-            };
-        case FETCH_REP_SUCCESS:
+        case FETCH_REPLATE_FAILURE:
             console.log(action.payload);
             return {
                 ...state,
-                err: '',
-                fetchingData: false,
-                ...action.payload
-            }; 
+                err: action.payload,
+                fetchingData: false
+            };    
+        // case FETCH_REP_START:
+        //     return {
+        //         ...state,
+        //         err: '',
+        //         fetchingData: true
+        //     };
+        // case FETCH_REP_SUCCESS:
+        //     console.log(action.payload);
+        //     return {
+        //         ...state,
+        //         err: '',
+        //         fetchingData: false,
+        //         ...action.payload
+        //     }; 
         // case FETCH_REPL_SUCCESS:
         //     console.log(action.payload);
         //     return {
@@ -74,12 +81,6 @@ const rootReducer = (state = initialState, action) => {
         //         fetchingData: false,
         //         ...action.payload
         //     };
-        case FETCH_REPLATE_FAILURE:
-            return {
-                ...state,
-                err: action.payload,
-                fetchingData: false
-            };
         // case UPDATE:
         //     return {
         //         ...state,

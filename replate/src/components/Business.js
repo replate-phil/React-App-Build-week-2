@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getBusiness, postData } from '../actions';
+import { getBusiness, postBusiness } from '../actions';
 import styled from 'styled-components';
 
 const BusinessPage = styled.div`
@@ -13,17 +13,18 @@ class Business extends Component {
         super();
         this.state = {
             businesses: {
-                businessName: '',
-                businessAddr: '',
-                phone: '',
-                email: '',
-                usertype: ''
+                'businessName': '',
+                'businessAddr': '',
+                'phone': '',
+                'email': '',
+                'password': '',
+                'usertype': ''
             }  
         }
     };
 
     componentDidMount() {
-        this.props.getBusiness(this.state.businesses);
+        this.props.getBusiness();
     }
 
     handleChanges = e => {
@@ -36,7 +37,7 @@ class Business extends Component {
     
     // business = e => {
     //     e.preventDefault();
-    //     this.props.postData(this.state.businesses);
+    //     this.props.postBusiness(this.state.business);
     // }
 
     render() { 
@@ -66,5 +67,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { getBusiness, postData }
+    { getBusiness, postBusiness }
 ) (Business);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { register, getBusiness } from '../actions';
+import { register, getData } from '../actions';
 
 //Business
 class RegisterB extends Component {
@@ -19,7 +19,7 @@ class RegisterB extends Component {
     };
     
     componentDidMount() {
-        this.props.getBusiness();
+        this.props.getData();
     }
 
     handleChanges = e => {
@@ -112,5 +112,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { register, getBusiness }
+    { register, getData }
 ) (RegisterB);

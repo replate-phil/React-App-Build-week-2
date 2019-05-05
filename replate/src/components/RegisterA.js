@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { register } from '../actions';
+import { register, getData } from '../actions';
 
 //volunteer
 class RegisterA extends Component {
@@ -19,9 +19,9 @@ class RegisterA extends Component {
         }}
     };
     
-    // componentDidMount() {
-    //     this.props.getVolunteer();
-    // }
+    componentDidMount() {
+        this.props.getData();
+    }
 
     handleChanges = e => {
         this.setState({
@@ -121,5 +121,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { register }
+    { register, getData }
 ) (RegisterA);

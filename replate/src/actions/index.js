@@ -72,10 +72,10 @@ export const getData = () => dispatch => {
         }); 
 };
 
-export const postData = (businesses, donation, volunteers, foodbanks) => dispatch => {
+export const postData = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/`, businesses, donation, volunteers, foodbanks, {
+        .post(`${URL}/`, {
             headers: {Authorization: localStorage.getItem('token')}
         })
         .then(res => {
@@ -103,7 +103,9 @@ export const getBusiness = () => dispatch => {
 export const postBusiness = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/business/${id}`)
+        .post(`${URL}/api/business`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -113,7 +115,9 @@ export const postBusiness = () => dispatch => {
 export const updateBusiness = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/business/${id}`)
+        .put(`${URL}/api/business/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -123,7 +127,9 @@ export const updateBusiness = () => dispatch => {
 export const deleteBusiness = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/business/${id}`)
+        .delete(`${URL}/api/business/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res =>
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -131,29 +137,35 @@ export const deleteBusiness = (id) => dispatch => {
 };
 
 export const getVolunteer = () => dispatch => {
-    dispatch({ type: FETCH_REP_START });
+    dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/volunteers`)
+        .get(`${URL}/api/volunteers`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
-            dispatch({ type: FETCH_REP_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
-        .catch(err => dispatch({ type: FETCH_REP_FAILURE, payload: err }));
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
 export const postVolunteer = () => dispatch => {
-    dispatch({ type: FETCH_REP_START });
+    dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/volunteers`)
+        .post(`${URL}/api/volunteers`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
-            dispatch({ type: FETCH_REP_SUCCESS, payload: res.data })
+            dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
-        .catch(err => dispatch({ type: FETCH_REP_FAILURE, payload: err }));
+        .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
 export const updateVolunteer = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/volunteers/${id}`)
+        .put(`${URL}/api/volunteers/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -163,7 +175,9 @@ export const updateVolunteer = () => dispatch => {
 export const deleteVolunteer = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/volunteers/${id}`)
+        .delete(`${URL}/api/volunteers/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -173,7 +187,9 @@ export const deleteVolunteer = (id) => dispatch => {
 export const getDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/donations`)
+        .get(`${URL}/api/donations`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -183,7 +199,9 @@ export const getDonation = () => dispatch => {
 export const postDonation = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/donations`)
+        .post(`${URL}/api/donations`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -193,7 +211,9 @@ export const postDonation = () => dispatch => {
 export const updateDonation = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/donations/${id}`)
+        .put(`${URL}/api/donations/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -203,7 +223,9 @@ export const updateDonation = () => dispatch => {
 export const deleteDonation = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/donations/${id}`)
+        .delete(`${URL}/api/donations/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -213,7 +235,9 @@ export const deleteDonation = (id) => dispatch => {
 export const getFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .get(`${URL}/api/foodbank`)
+        .get(`${URL}/api/foodbank`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -223,17 +247,21 @@ export const getFoodbank = () => dispatch => {
 export const postFoodbank = () => dispatch => {
     dispatch({ type: FETCH_REPLATE_START });
     axios
-        .post(`${URL}/api/foodbank`)
+        .post(`${URL}/api/foodbank`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
         .catch(err => dispatch({ type: FETCH_REPLATE_FAILURE, payload: err }));
 };
 
-export const updateFoodbank = (replate) => dispatch => {
+export const updateFoodbank = () => dispatch => {
     dispatch({ type: UPDATE });
     axios
-        .put(`${URL}/api/foodbank/${id}`, replate)
+        .put(`${URL}/api/foodbank/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
@@ -243,7 +271,9 @@ export const updateFoodbank = (replate) => dispatch => {
 export const deleteFoodbank = (id) => dispatch => {
     dispatch({ type: DELETE });
     axios
-        .delete(`${URL}/api/foodbank/${id}`)
+        .delete(`${URL}/api/foodbank/${id}`, {
+            headers: {Authorization: localStorage.getItem('token')}
+        })
         .then(res => 
             dispatch({ type: FETCH_REPLATE_SUCCESS, payload: res.data })
         )
